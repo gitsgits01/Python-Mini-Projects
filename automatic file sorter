@@ -1,0 +1,18 @@
+import os, shutil
+path = r"D:/Gitima Python/Python-mini-projects/automatic_file sorter/" #r= read raw
+file_name = os.listdir(path) #shows the file in the path
+
+folders_names =["image files", "text files"] #type of folder 
+
+for i in range(0,2):
+    if not os.path.exists(path + folders_names[i]):
+        print( path + folders_names[i])
+        os.makedirs(path + folders_names[i]) #make the directory if exists
+
+for file in file_name:
+    
+    if ".jpeg" in file and not os.path.exists(path + "/image files/" + file):
+        shutil.move(path + file, path + "/image files/" + file)
+    
+    elif ".txt" in file and not os.path.exists(path + "/text files/" + file):
+        shutil.move(path + file, path + "/text files/" + file)
